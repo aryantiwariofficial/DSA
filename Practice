@@ -1,0 +1,24 @@
+def count_favorite_singers(n, playlist):
+    singer_counts = {}
+    max_count = 0
+
+    for singer in playlist:
+        if singer not in singer_counts:
+            singer_counts[singer] = 0
+        singer_counts[singer] += 1
+        max_count = max(max_count, singer_counts[singer])
+
+    favorite_singers = sum(1 for count in singer_counts.values() if count == max_count)
+    return favorite_singers
+
+
+n = int(input())
+
+
+playlist = list(map(int, input().split()))
+
+
+favorite_singers = count_favorite_singers(n, playlist)
+
+
+print(favorite_singers)
